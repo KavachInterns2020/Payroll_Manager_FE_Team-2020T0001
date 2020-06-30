@@ -22,7 +22,7 @@ function Navigation() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
               <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/about-us">Register</Nav.Link>
+              <Nav.Link href="/register">Register</Nav.Link>
               <Nav.Link href="/contact-us">About Us</Nav.Link>
               <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
