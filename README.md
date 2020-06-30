@@ -8,14 +8,22 @@ Git Cammands
 
 
 To push-
+
 git status
+
 git add filename
+
 git commit -m "new commit"
+
 git push
 
 
 To update Repo- 
+
 git push -u origin master
+
 git fetch origin
+
 git reset --hard origin/master
+
 git clean -f -d
