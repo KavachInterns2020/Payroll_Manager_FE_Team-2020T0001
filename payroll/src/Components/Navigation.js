@@ -14,14 +14,15 @@ import {
 function Navigation() {
   return (
     <div className="row">
-      <div className="col-sm-12">
+      <div className="col-sm-1"></div>
+      <div className="col-sm-10">
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
           <Navbar.Brand href="#home">Payroll Management System</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link href="/register">Register</Nav.Link>
-              <Nav.Link href="#pricing"></Nav.Link>
+              <Nav.Link href="/api/register">Register</Nav.Link>
+              <Nav.Link href="/api/login">Login</Nav.Link>
               <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
@@ -45,6 +46,7 @@ function Navigation() {
           </Navbar.Collapse>
         </Navbar>
       </div>
+      <div className="col-sm-1"></div>
     </div>
   );
 }

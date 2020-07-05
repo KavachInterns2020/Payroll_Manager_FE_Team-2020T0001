@@ -6,6 +6,7 @@ import App from "./App";
 import registerServiceWorker from "./registerServiceWorker";
 import Register from "./Components/company_register";
 import Navigation from "./Components/Navigation";
+import ValidatedLoginForm from "./Components/ValidatedLoginForm";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 ReactDOM.render(
@@ -13,7 +14,10 @@ ReactDOM.render(
     <Router>
       <Navigation />
       <Switch>
-        <Route path="/register" exact>
+        <Route path="/api/login" exact>
+          <ValidatedLoginForm />
+        </Route>
+        <Route path="/api/register" exact>
           <Register />
         </Route>
       </Switch>
