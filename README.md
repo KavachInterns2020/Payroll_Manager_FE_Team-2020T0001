@@ -32,8 +32,9 @@ git clean -f -d
 
 To Start the project
 step 1:
-git clone https://github.com/KavachNetworks/Payroll_Manager_FE_Team-2020T0001.git
 
+
+git clone https://github.com/KavachNetworks/Payroll_Manager_FE_Team-2020T0001.git
 
 step 2:
 
