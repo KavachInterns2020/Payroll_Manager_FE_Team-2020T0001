@@ -27,3 +27,13 @@ git fetch origin
 git reset --hard origin/master
 
 git clean -f -d
+
+
+
+To Start the project
+step 1:
+git clone https://github.com/KavachNetworks/Payroll_Manager_FE_Team-2020T0001.git
+step 2:
+npm install
+step3:
+npm start
