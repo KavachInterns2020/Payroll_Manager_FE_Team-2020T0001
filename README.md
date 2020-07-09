@@ -17,9 +17,9 @@ Software requirement:
 2. django-3.0.7
 3. djangorestframework-3.11.0
 4. pip-20.1.1
-5.React v16.9.0
-6.npm 6.13.4
-7.node v12.14.1
+5. React v16.9.0
+6. npm 6.13.4
+7. node v12.14.1
 
 
 
@@ -30,24 +30,24 @@ Git Cammands
 
 To push-
 
-git status
+1. git status
 
-git add .
+2. git add .
 
-git commit -m "new commit"
+3. git commit -m "new commit"
 
-git push
+4. git push
 
 
 To update Repo- 
 
-git push -u origin master
+1. git push -u origin master
 
-git fetch origin
+2. git fetch origin
 
-git reset --hard origin/master
+3. git reset --hard origin/master
 
-git clean -f -d
+4. git clean -f -d
 
 
 
