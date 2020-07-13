@@ -34,7 +34,6 @@ class company_register extends Component {
 
     this.state = {
       companyName: null,
-      companyId: null,
       companyAddress: null,
       companyContactNumber: null,
       companyEmailAddress: null,
@@ -44,7 +43,6 @@ class company_register extends Component {
       companyDetails: null,
       formErrors: {
         companyName: "",
-        companyId: "",
         companyAddress: "",
         companyContactNumber: "",
         companyEmailAddress: "",
@@ -59,7 +57,7 @@ class company_register extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     if (formValid(this.state)) {
-      console.log(this.state);
+      console.log("State" + this.state);
 
       axios
         .post("http://127.0.0.1:8000/api/companies/", this.state)
@@ -71,7 +69,6 @@ class company_register extends Component {
           );
           this.setState({
             companyName: "",
-            companyId: "",
             companyAddress: "",
             companyContactNumber: "",
             companyEmailAddress: "",
@@ -82,6 +79,7 @@ class company_register extends Component {
           });
         })
         .catch((error) => {
+          console.log("error23" + error);
           NotificationManager.error(
             "Error while Registering the Company!",
             "error.response.data"
@@ -104,10 +102,6 @@ class company_register extends Component {
     switch (name) {
       case "companyName":
         formErrors.companyName =
-          value.length < 3 ? "minimum 3 characaters required" : "";
-        break;
-      case "companyId":
-        formErrors.companyId =
           value.length < 3 ? "minimum 3 characaters required" : "";
         break;
       case "companyAddress":
@@ -172,20 +166,7 @@ class company_register extends Component {
                 <span className="errorMessage">{formErrors.companyName}</span>
               )}
             </div>
-            <div className="ID">
-              <label htmlFor="companyId">ID</label>
-              <input
-                className={formErrors.companyId.length > 0 ? "error" : null}
-                placeholder="ID"
-                type="text"
-                name="companyId"
-                noValidate
-                onChange={this.handleChange}
-              />
-              {formErrors.companyId.length > 0 && (
-                <span className="errorMessage">{formErrors.companyId}</span>
-              )}
-            </div>
+
             <div className="Address">
               <label htmlFor="companyAddress">Address</label>
               <input

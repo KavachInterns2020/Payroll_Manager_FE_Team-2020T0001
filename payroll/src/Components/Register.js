@@ -13,7 +13,6 @@ class Form extends Component {
 
     this.state = {
       companyName: "",
-      companyId: "",
       companyAddress: "",
       companyContactNumber: "",
       companyEmailAddress: "",
@@ -43,11 +42,7 @@ class Form extends Component {
       companyName: event.target.value,
     });
   };
-  IDhandler = (event) => {
-    this.setState({
-      companyId: event.target.value,
-    });
-  };
+
   Addresshandler = (event) => {
     this.setState({
       companyAddress: event.target.value,
@@ -91,7 +86,7 @@ class Form extends Component {
     // console.log(this.state);
 
     event.preventDefault();
-    
+
     axios
       .post("http://127.0.0.1:8000/api/companies/", this.state)
       .then((response) => {
@@ -110,7 +105,6 @@ class Form extends Component {
 
     this.setState({
       companyName: "",
-      companyId: "",
       companyAddress: "",
       companyContactNumber: "",
       companyEmailAddress: "",
@@ -141,14 +135,6 @@ class Form extends Component {
                     value={this.state.companyName}
                     onChange={this.Namehandler}
                     placeholder="Name..."
-                  />
-                  <br />
-                  <label>ID :</label>{" "}
-                  <input
-                    type="text"
-                    value={this.state.companyId}
-                    onChange={this.IDhandler}
-                    placeholder="ID..."
                   />
                   <br />
                   <label>Address :</label>{" "}
