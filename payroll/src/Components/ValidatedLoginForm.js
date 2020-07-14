@@ -18,7 +18,7 @@ const ValidatedLoginForm = () => (
       console.log(credentials);
       setTimeout(() => {
         axios
-          .post("http://127.0.0.1:8000/auth/login/", credentials)
+          .post("http://127.0.0.1:8000/auth/login/", values)
           .then((response) => {
             NotificationManager.success(
               "You have Successfully Logged in!",
@@ -73,38 +73,41 @@ const ValidatedLoginForm = () => (
         handleSubmit,
       } = props;
       return (
-        <form onSubmit={handleSubmit}>
-          <h1>Login Form</h1>
-          <label htmlFor="username">Username</label>
-          <input
-            name="username"
-            type="text"
-            placeholder="Enter your Username"
-            value={values.username}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            className={errors.username && touched.username && "error"}
-          />
-          {errors.username && touched.username && (
-            <div className="input-feedback">{errors.username}</div>
-          )}
-          <label htmlFor="password">Password</label>
-          <input
-            name="password"
-            type="Password"
-            placeholder="Enter your Password"
-            value={values.password}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            className={errors.password && touched.password && "error"}
-          />
-          {errors.password && touched.password && (
-            <div className="input-feedback">{errors.password}</div>
-          )}
-          <button type="submit" disabled={isSubmitting}>
-            Login
-          </button>
-        </form>
+        <div>
+          <NotificationContainer />
+          <form onSubmit={handleSubmit}>
+            <h1>Login Form</h1>
+            <label htmlFor="username">Username</label>
+            <input
+              name="username"
+              type="text"
+              placeholder="Enter your Username"
+              value={values.username}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              className={errors.username && touched.username && "error"}
+            />
+            {errors.username && touched.username && (
+              <div className="input-feedback">{errors.username}</div>
+            )}
+            <label htmlFor="password">Password</label>
+            <input
+              name="password"
+              type="Password"
+              placeholder="Enter your Password"
+              value={values.password}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              className={errors.password && touched.password && "error"}
+            />
+            {errors.password && touched.password && (
+              <div className="input-feedback">{errors.password}</div>
+            )}
+            <button type="submit" disabled={isSubmitting}>
+              Login
+            </button>
+          </form>
+        </div>
       );
     }}
   </Formik>
