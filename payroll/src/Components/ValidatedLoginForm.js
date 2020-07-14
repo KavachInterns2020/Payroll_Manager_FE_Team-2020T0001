@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import "./CSS/ValidatedLoginForm.css";
@@ -10,107 +10,102 @@ import {
   NotificationManager,
 } from "react-notifications";
 
-const ValidatedLoginForm = () => (
-  <Formik
-    initialValues={{ username: "", password: "" }}
-    onSubmit={(values, { setSubmitting }) => {
-      var credentials = JSON.stringify(values);
-      console.log(credentials);
-      setTimeout(() => {
-        axios
-          .post("http://127.0.0.1:8000/auth/login/", values)
-          .then((response) => {
-            NotificationManager.success(
-              "You have Successfully Logged in!",
-              "Successful!",
-              2000
-            );
-          })
-          .catch((error) => {
-            console.log("error" + error.body);
-            NotificationManager.error(
-              "Error Loging in!",
-              "error.response.data"
-            );
-          });
-        setSubmitting(false);
-      }, 500);
-    }}
-    validationSchema={Yup.object().shape({
-      username: Yup.string()
-        .min(3, "Username is too short - should be 3 chars minimum.")
-        .required("Required")
-        .matches(
-          /^[a-zA-Z0-9_]+$/,
-          "Username can only contain alphanumeric characters and underscore(_)"
-        ),
-      password: Yup.string()
-        .required("No password provided.")
-        .min(5, "Password is too short - should be 8 chars minimum.")
-        // .matches(/(?=.*[0-9])/, "Password must contain a number.")
-        .matches(
-          /(?=.*[a-z])/,
-          "Password must contain a lowercase alphabetical character."
-        ),
-      // .matches(
-      //   /(?=.*[a-z])/,
-      //   "Password must contain a uppercase alphabetical character."
-      // )
-      // .matches(
-      //   /(?=.*[!@#$%^&*])/,
-      //   "Password must contain a special character."
-      // ),
-    })}
-  >
-    {(props) => {
-      const {
-        values,
-        touched,
-        errors,
-        isSubmitting,
-        handleChange,
-        handleBlur,
-        handleSubmit,
-      } = props;
-      return (
+import { setUserSession } from "./../utils/Common.js";
+
+function ValidatedLoginForm(props) {
+  const [loading, setLoading] = useState(false);
+  const username = useFormInput("");
+  const password = useFormInput("");
+  const [error, setError] = useState(null);
+
+  // handle button click of login form
+  const handleLogin = () => {
+    setError(null);
+    setLoading(true);
+    console.log(username.value);
+    axios
+      .post("http://127.0.0.1:8000/auth/login/", {
+        username: username.value,
+        password: password.value,
+      })
+      .then((response) => {
+        NotificationManager.success(
+          "You have Successfully Logged in!",
+          "Successful!",
+          2000
+        );
+        setLoading(false);
+        console.log(response);
+        let usr = {
+          username: username,
+          password: password,
+          isLoggedin: true,
+        };
+        setUserSession(response.data.token, usr);
+        window.location = "/dashboard";
+      })
+      .catch((error) => {
+        setLoading(false);
+        NotificationManager.error("Error Loging in!", "error.response.data");
+        if (error.response.status === 401)
+          setError(error.response.data.message);
+        else setError("Something went wrong. Please try again later.");
+      });
+  };
+
+  return (
+    <div className="row">
+      <div className="col-sm-4"></div>
+      <div className="col-sm-4">
         <div>
+          <h1>
+            {" "}
+            <span class="badge badge-primary">Login</span>
+          </h1>
+          <br />
           <NotificationContainer />
-          <form onSubmit={handleSubmit}>
-            <h1>Login Form</h1>
-            <label htmlFor="username">Username</label>
-            <input
-              name="username"
-              type="text"
-              placeholder="Enter your Username"
-              value={values.username}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              className={errors.username && touched.username && "error"}
-            />
-            {errors.username && touched.username && (
-              <div className="input-feedback">{errors.username}</div>
-            )}
-            <label htmlFor="password">Password</label>
-            <input
-              name="password"
-              type="Password"
-              placeholder="Enter your Password"
-              value={values.password}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              className={errors.password && touched.password && "error"}
-            />
-            {errors.password && touched.password && (
-              <div className="input-feedback">{errors.password}</div>
-            )}
-            <button type="submit" disabled={isSubmitting}>
-              Login
-            </button>
-          </form>
+          <br />
+          <div>
+            Username
+            <br />
+            <input type="text" {...username} autoComplete="new-password" />
+          </div>
+          <div style={{ marginTop: 10 }}>
+            Password
+            <br />
+            <input type="password" {...password} autoComplete="new-password" />
+          </div>
+          {error && (
+            <>
+              <small style={{ color: "red" }}>{error}</small>
+              <br />
+            </>
+          )}
+          <br />
+          <input
+            type="submit"
+            value={loading ? "Loading..." : "Login"}
+            onClick={handleLogin}
+            disabled={loading}
+          />
+          <br />
         </div>
-      );
-    }}
-  </Formik>
-);
+      </div>
+      <div className="col-sm-4"></div>
+    </div>
+  );
+}
+
+const useFormInput = (initialValue) => {
+  const [value, setValue] = useState(initialValue);
+
+  const handleChange = (e) => {
+    setValue(e.target.value);
+  };
+  return {
+    value,
+    onChange: handleChange,
+  };
+};
 
 export default ValidatedLoginForm;
