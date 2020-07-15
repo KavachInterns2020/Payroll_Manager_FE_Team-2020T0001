@@ -13,7 +13,12 @@ function Dashboard(props) {
       <div className="col-sm-4"></div>
       <div className="col-sm-4">
         <div>
-          Welcome {user.username.value}!<br />
+          <h1>
+            <span className="badge badge-info">
+              {" "}
+              Welcome {user.username.value}!
+            </span>
+          </h1>
           <br />
         </div>
       </div>

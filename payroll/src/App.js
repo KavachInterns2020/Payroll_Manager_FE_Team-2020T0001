@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import Register from "./Components/company_register";
 import Navigation from "./Components/Navigation";
 import ValidatedLoginForm from "./Components/ValidatedLoginForm";

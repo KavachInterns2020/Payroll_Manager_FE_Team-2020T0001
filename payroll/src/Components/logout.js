@@ -6,6 +6,7 @@ import {
   NotificationContainer,
   NotificationManager,
 } from "react-notifications";
+import { Button } from "react-bootstrap";
 function logout(props) {
   const user = getUser();
   const token = getToken();
@@ -41,9 +42,16 @@ function logout(props) {
       <div className="col-sm-4"></div>
       <div className="col-sm-4">
         <div>
-          Welcome {user.username.value}!<br />
+          <h1>
+            <span className="badge badge-info">
+              {" "}
+              Welcome {user.username.value}!
+            </span>
+          </h1>
           <br />
-          <input type="button" onClick={handleLogout} value="Logout" />
+          <Button variant="danger" onClick={handleLogout} size="lg">
+            Logout
+          </Button>
         </div>
       </div>
       <div className="col-sm-4"></div>
