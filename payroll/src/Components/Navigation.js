@@ -16,14 +16,24 @@ class Navigation extends Component {
     return (
       <div className="">
         <Navbar bg="light" expand="lg">
-          <Navbar.Brand href="#home">React-Payroll</Navbar.Brand>
+          <Navbar.Brand href="#home" style={{ fontWeight: "bold" }}>
+            React-Payroll
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <div className="col-sm-6">
               <Nav className="mr-auto">
-                <Nav.Link href="/Dashboard">Dashboard</Nav.Link>
-                <Nav.Link href="#link">Link</Nav.Link>
-                <NavDropdown title="Action" id="basic-nav-dropdown">
+                <Nav.Link href="/Dashboard" style={{ fontWeight: "bold" }}>
+                  Dashboard
+                </Nav.Link>
+                <Nav.Link href="#link" style={{ fontWeight: "bold" }}>
+                  Link
+                </Nav.Link>
+                <NavDropdown
+                  title="Action"
+                  id="basic-nav-dropdown"
+                  style={{ fontWeight: "bold" }}
+                >
                   <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.2">
                     Another action
