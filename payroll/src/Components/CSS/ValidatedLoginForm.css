@@ -7,7 +7,7 @@ h1 {
 }
 
 form {
-  max-width: 500px;
+  max-width: 600px;
   width: 100%;
   margin: 0 auto;
 }
@@ -53,4 +53,95 @@ button:hover {
   cursor: pointer;
   background-color: white;
   color: rgb(70, 153, 179);
+}
+.account-page {
+  align-items: center;
+  display: flex;
+}
+.account-page .main-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+.account-content {
+  padding: 20px 0;
+}
+.account-title {
+  font-size: 26px;
+  font-weight: 500;
+  margin-bottom: 5px;
+  text-align: center;
+}
+.account-subtitle {
+  color: #bbc4cc;
+  font-size: 18px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.account-box {
+  background-color: #16191c;
+  border: 1px solid #16191c;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+  overflow: hidden;
+  width: 480px;
+}
+.account-wrapper {
+  padding: 30px;
+}
+.account-logo {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.account-box .form-group {
+  margin-bottom: 25px;
+}
+.account-box .account-btn {
+  background: #ff9b44;
+  background: -moz-linear-gradient(left, #ff9b44 0%, #fc6075 100%);
+  background: -webkit-linear-gradient(left, #ff9b44 0%, #fc6075 100%);
+  background: -ms-linear-gradient(left, #ff9b44 0%, #fc6075 100%);
+  background: linear-gradient(to right, #ff9b44 0%, #fc6075 100%);
+  border: 0;
+  border-radius: 4px;
+  display: block;
+  font-size: 22px;
+  padding: 10px 26px;
+  width: 100%;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+.account-box .account-btn:hover,
+.account-box .account-btn:focus {
+  border: 0;
+  opacity: 0.8;
+}
+.account-box .form-control {
+  background-color: #2e3439;
+  border: 1px solid #2e3439;
+  border-radius: 4px;
+  height: 46px;
+}
+.account-box label {
+  color: #7f8fa4;
+  font-size: 16px;
+  font-weight: normal;
+  margin-bottom: 5px;
+}
+.account-logo img {
+  width: 100px;
+}
+.account-footer {
+  text-align: center;
+}
+.account-footer p {
+  margin-bottom: 0;
+}
+.account-footer a {
+  color: #ff9b44;
+}
+.account-footer a:hover {
+  color: #ff9b44;
 }

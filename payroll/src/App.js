@@ -7,12 +7,12 @@ import PrivateRoute from "./utils/PrivateRoute";
 import PublicRoute from "./utils/PublicRoute";
 import Dashboard from "./Components/Dashboard.js";
 import Logout from "./Components/logout.js";
+import "./Components/CSS/general.css";
 
 class App extends Component {
   render() {
     return (
       <Router>
-        <Navigation />
         <Switch>
           <PublicRoute path="/api/login" component={ValidatedLoginForm} />
           <PublicRoute path="/api/register" component={Register} />
